@@ -1,0 +1,649 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "VS_REST_API_DOKU"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "yannik.wegner@stud.hs-ruhrwest.de"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "192.168.178:4567"
+basePath: "/api"
+tags:
+- name: "users"
+  description: "Operations about Users"
+- name: "products"
+  description: "Operations about Products"
+- name: "contact-requests"
+  description: "Operations about Contact-Requests"
+- name: "reviews"
+  description: "Operations about Reviews"
+- name: "orders"
+  description: "Operations about Orders"
+schemes:
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "users"
+      summary: "Return all Users"
+      description: "Returns all the Users in the DB"
+      operationId: "GetUsers"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Users"
+    post:
+      tags:
+      - "users"
+      summary: "Create user"
+      description: "Create a User!"
+      operationId: "createUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/UserPost"
+      responses:
+        "201":
+          description: "status: CREATED_201"
+    delete:
+      tags:
+      - "users"
+      summary: "Delete all users"
+      description: "Delete all Users!"
+      operationId: "deleteUsers"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /users/param:
+    get:
+      tags:
+      - "users"
+      summary: "Returns a User"
+      description: "Returns all informations from User, by specify a variable"
+      operationId: "GetUser"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Users"
+  /users/id:
+    put:
+      tags:
+      - "users"
+      summary: "Change User"
+      description: "Change a User by Id!"
+      operationId: "changeUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Change user object"
+        required: true
+        schema:
+          $ref: "#/definitions/UserChange"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Users"
+    delete:
+      tags:
+      - "users"
+      summary: "Delete a User"
+      description: "Delete a User by Id!"
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /products:
+    get:
+      tags:
+      - "products"
+      summary: "Return all Products"
+      description: "Returns all the Products in the DB"
+      operationId: "GetProducts"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Products"
+    post:
+      tags:
+      - "products"
+      summary: "Create Product"
+      description: "Create a Product!"
+      operationId: "createProduct"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created product object"
+        required: true
+        schema:
+          $ref: "#/definitions/Product"
+      responses:
+        "201":
+          description: "status: CREATED_201"
+  /products/param:
+    get:
+      tags:
+      - "products"
+      summary: "Returns a Product"
+      description: "Returns all informations from Product, by specify a variable"
+      operationId: "GetProduct"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Products"
+  /products/id:
+    put:
+      tags:
+      - "products"
+      summary: "Change Product"
+      description: "Change a Product by Id!"
+      operationId: "changeProduct"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Change product object"
+        required: true
+        schema:
+          $ref: "#/definitions/ProductChange"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Products"
+    delete:
+      tags:
+      - "products"
+      summary: "Delete a Product"
+      description: "Delete a Product by Id!"
+      operationId: "deleteProduct"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /contact-requests:
+    get:
+      tags:
+      - "contact-requests"
+      summary: "Return all Contact-Requests"
+      description: "Returns all the Contact-Requests in the DB"
+      operationId: "GetContact-Requests"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Contact-Requests"
+    post:
+      tags:
+      - "contact-requests"
+      summary: "Create Contact-Request"
+      description: "Create a Contact-Request!"
+      operationId: "createContact-Request"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created Contact-Request object"
+        required: true
+        schema:
+          $ref: "#/definitions/Contact-Request"
+      responses:
+        "201":
+          description: "status: CREATED_201"
+    delete:
+      tags:
+      - "contact-requests"
+      summary: "Delete all Contact-Requests"
+      description: "Delete all Contact-Request!"
+      operationId: "deleteContact-Requests"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /contact-requests/param:
+    get:
+      tags:
+      - "contact-requests"
+      summary: "Returns a Contact-Request"
+      description: "Returns all informations from Contact-Request, by specify a variable"
+      operationId: "GetContact-Request"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Contact-Request"
+  /contact-requests/id:
+    put:
+      tags:
+      - "contact-requests"
+      summary: "change Contact-Request"
+      description: "Change a Contact-Request by Id!"
+      operationId: "changeContact-Request"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Change Contact-Request object"
+        required: true
+        schema:
+          $ref: "#/definitions/Contact-RequestChange"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Contact-Requests"
+    delete:
+      tags:
+      - "contact-requests"
+      summary: "Delete a Contact-Request"
+      description: "Delete a Contact-Request by Id!"
+      operationId: "deleteContact-Request"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /reviews:
+    get:
+      tags:
+      - "reviews"
+      summary: "Return all Reviews"
+      description: "Returns all the Reviews in the DB"
+      operationId: "GetReviews"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Reviews"
+    post:
+      tags:
+      - "reviews"
+      summary: "Create Review"
+      description: "Create a Review!"
+      operationId: "createReview"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created Review object"
+        required: true
+        schema:
+          $ref: "#/definitions/ReviewPost"
+      responses:
+        "200":
+          description: "status: CREATED_201"
+    delete:
+      tags:
+      - "reviews"
+      summary: "Delete all Reviews"
+      description: "Delete all Reviews!"
+      operationId: "deleteReviews"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /reviews/param:
+    get:
+      tags:
+      - "reviews"
+      summary: "Returns a Review"
+      description: "Returns all informations from Review, by specify a variable"
+      operationId: "GetContact-Review"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Reviews"
+  /reviews/id:
+    put:
+      tags:
+      - "reviews"
+      summary: "change Review"
+      description: "Change a Review by Id!"
+      operationId: "changeReview"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Change Review object"
+        required: true
+        schema:
+          $ref: "#/definitions/ReviewChange"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Reviews"
+    delete:
+      tags:
+      - "reviews"
+      summary: "Delete a Review"
+      description: "Delete a Review by Id!"
+      operationId: "deleteReview"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /orders:
+    get:
+      tags:
+      - "orders"
+      summary: "Return all Orders"
+      description: "Returns all the Orders in the DB"
+      operationId: "GetOrders"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Orders"
+    post:
+      tags:
+      - "orders"
+      summary: "Create Order"
+      description: "Create a Order!"
+      operationId: "createOrder"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created Order object"
+        required: true
+        schema:
+          $ref: "#/definitions/OrderPost"
+      responses:
+        "200":
+          description: "status: CREATED_201"
+    delete:
+      tags:
+      - "orders"
+      summary: "Delete all Orders"
+      description: "Delete all Orders!"
+      operationId: "deleteOrders"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+  /orders/param:
+    get:
+      tags:
+      - "orders"
+      summary: "Returns a Order"
+      description: "Returns all informations from Order, by specify a variable"
+      operationId: "GetOrder"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Orders"
+  /orders/id:
+    put:
+      tags:
+      - "orders"
+      summary: "change Order"
+      description: "Change a Order by Id!"
+      operationId: "changeOrder"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Change Order object"
+        schema:
+          $ref: "#/definitions/OrderChange"
+      responses:
+        "200":
+          description: "status: OK_200"
+          schema:
+            $ref: "#/definitions/Orders"
+    delete:
+      tags:
+      - "orders"
+      summary: "Delete a Order"
+      description: "Delete a Order by Id!"
+      operationId: "deleteOrder"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "status: OK_200"
+definitions:
+  Users:
+    type: "object"
+    properties:
+      users:
+        type: "array"
+        items:
+          $ref: "#/definitions/User"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+        description: "User Status"
+  UserPost:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+        description: "User Status"
+  UserChange:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+        description: "User Status"
+  Products:
+    type: "object"
+    properties:
+      products:
+        type: "array"
+        items:
+          $ref: "#/definitions/Product"
+  Product:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      price:
+        type: "integer"
+      brand:
+        type: "string"
+      since:
+        type: "integer"
+      url:
+        type: "string"
+      id:
+        type: "integer"
+        description: "Product Status"
+  ProductChange:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      price:
+        type: "integer"
+      brand:
+        type: "string"
+        description: "Product Status"
+  Contact-Requests:
+    type: "object"
+    properties:
+      contact-requests:
+        type: "array"
+        items:
+          $ref: "#/definitions/Contact-Request"
+  Contact-Request:
+    type: "object"
+    properties:
+      customer-number:
+        type: "string"
+      subject:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      email:
+        type: "string"
+      category:
+        type: "string"
+      description:
+        type: "string"
+        description: "Product Status"
+  Contact-RequestChange:
+    type: "object"
+    properties:
+      customer-number:
+        type: "string"
+      subject:
+        type: "string"
+        description: "Product Status"
+  Reviews:
+    type: "object"
+    properties:
+      reviews:
+        type: "array"
+        items:
+          $ref: "#/definitions/Review"
+  Review:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      rating:
+        type: "integer"
+      username:
+        type: "string"
+      text:
+        type: "string"
+        description: "Review Status"
+  ReviewPost:
+    type: "object"
+    properties:
+      rating:
+        type: "integer"
+      username:
+        type: "string"
+      text:
+        type: "string"
+        description: "Review Status"
+  ReviewChange:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+      text:
+        type: "string"
+        description: "Review Status"
+  Orders:
+    type: "object"
+    properties:
+      reviews:
+        type: "array"
+        items:
+          $ref: "#/definitions/Order"
+  Order:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      purchaser:
+        type: "string"
+      product:
+        type: "string"
+      quantity:
+        type: "integer"
+      totalcosts:
+        type: "integer"
+        description: "Order Status"
+  OrderPost:
+    type: "object"
+    properties:
+      purchaser:
+        type: "string"
+      product:
+        type: "string"
+      quantity:
+        type: "integer"
+      totalcosts:
+        type: "integer"
+        description: "Order Status"
+  OrderChange:
+    type: "object"
+    properties:
+      quantity:
+        type: "integer"
+      totalcosts:
+        type: "integer"
+        description: "Order Status"
